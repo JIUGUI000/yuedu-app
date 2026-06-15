@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="md_theme_primary">#5B6CFF</color>
+    <color name="md_theme_onPrimary">#FFFFFF</color>
+    <color name="md_theme_primaryContainer">#DEE0FF</color>
+    <color name="md_theme_onPrimaryContainer">#0A1B6B</color>
+    <color name="md_theme_secondary">#5E5C71</color>
+    <color name="md_theme_onSecondary">#FFFFFF</color>
+    <color name="md_theme_secondaryContainer">#E4DFF9</color>
+    <color name="md_theme_onSecondaryContainer">#1B1936</color>
+    <color name="md_theme_background">#FFFBFF</color>
+    <color name="md_theme_onBackground">#1B1B1F</color>
+    <color name="md_theme_surface">#FFFBFF</color>
+    <color name="md_theme_onSurface">#1B1B1F</color>
+    <color name="md_theme_surfaceVariant">#E3E1EC</color>
+    <color name="md_theme_onSurfaceVariant">#46464F</color>
+    <color name="md_theme_outline">#777680</color>
+    <color name="md_theme_error">#BA1A1A</color>
+
+    <!-- 阅读器背景 -->
+    <color name="reader_bg_white">#FFFFFF</color>
+    <color name="reader_bg_green">#C7E0C7</color>
+    <color name="reader_bg_black">#1B1B1B</color>
+    <color name="reader_bg_yellow">#F5EFD6</color>
+    <color name="reader_text_white">#1B1B1B</color>
+    <color name="reader_text_green">#2A3B2A</color>
+    <color name="reader_text_black">#C7C7C7</color>
+    <color name="reader_text_yellow">#5C4B2A</color>
+</resources>
