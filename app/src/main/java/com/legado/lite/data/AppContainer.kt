@@ -7,6 +7,9 @@ import com.legado.lite.data.dao.ChapterDao
 import com.legado.lite.data.dao.ReadHistoryDao
 import com.legado.lite.data.dao.SearchHistoryDao
 import com.legado.lite.data.http.WebFetcher
+import com.legado.lite.data.repo.BookRepositoryImpl
+import com.legado.lite.data.repo.BookSourceRepositoryImpl
+import com.legado.lite.data.repo.ReadHistoryRepositoryImpl
 import com.legado.lite.data.source.BookParser
 import com.legado.lite.data.source.BookSearcher
 import com.legado.lite.data.preferences.AppPreferencesStore

@@ -40,14 +40,17 @@ class BookSourceHeaderInterceptor : Interceptor {
 
     private fun parseFlatJsonObject(s: String): Map<String, String>? = try {
         val trimmed = s.trim().removePrefix("{").removeSuffix("}")
-        if (trimmed.isEmpty()) return emptyMap()
-        val map = LinkedHashMap<String, String>()
-        val regex = Regex("\"([^\"\\\\]*(?:\\\\.[^\"\\\\]*)*)\"\\s*:\\s*\"([^\"\\\\]*(?:\\\\.[^\"\\\\]*)*)\"")
-        for (m in regex.findAll(trimmed)) {
-            val (k, v) = m.destructured
-            map[k] = v.replace("\\\"", "\"").replace("\\\\", "\\")
+        if (trimmed.isEmpty()) {
+            emptyMap()
+        } else {
+            val map = LinkedHashMap<String, String>()
+            val regex = Regex("\"([^\"\\\\]*(?:\\\\.[^\"\\\\]*)*)\"\\s*:\\s*\"([^\"\\\\]*(?:\\\\.[^\"\\\\]*)*)\"")
+            for (m in regex.findAll(trimmed)) {
+                val (k, v) = m.destructured
+                map[k] = v.replace("\\\"", "\"").replace("\\\\", "\\")
+            }
+            map
         }
-        map
     } catch (_: Throwable) { null }
 
     /** 通过 OkHttp tag 关联书源，用于自动注入自定义 header。 */

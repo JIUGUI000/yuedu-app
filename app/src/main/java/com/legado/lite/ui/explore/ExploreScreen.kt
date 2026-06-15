@@ -98,7 +98,7 @@ fun ExploreScreen(
                 }
             } else {
                 items(recent, key = { it.id }) { h ->
-                    HistoryRow(h) { onOpenBook(h.bookId) }
+                    HistoryRow(h) { onOpenBook(h.id) }
                 }
             }
             item {

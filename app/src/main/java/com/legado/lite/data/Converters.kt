@@ -25,9 +25,11 @@ class Converters {
         if (value.isNullOrEmpty()) return emptyMap()
         return value.split(SEP_ENTRY)
             .filter { it.contains(SEP_KV) }
-            .associate {
-                val (k, v) = it.split(SEP_KV, limit = 2)
-                k to v.toIntOrNull() ?: 0
+            .associate { entry ->
+                val parts: List<String> = entry.split(SEP_KV, limit = 2)
+                val k = parts.getOrNull(0).orEmpty()
+                val v = parts.getOrNull(1)?.toIntOrNull() ?: 0
+                k to v
             }
     }
 

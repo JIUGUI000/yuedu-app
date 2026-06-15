@@ -95,7 +95,9 @@ object JsonPathExtractor {
                                 out.add(node.opt(inside.toInt()))
                             }
                             inside.contains(":") -> {
-                                val (s, e) = inside.split(":").let { it[0].toIntOrNull() ?: 0 to (it.getOrNull(1)?.toIntOrNull() ?: node.length()) }
+                                val parts: List<String> = inside.split(":")
+                                val s = parts.getOrNull(0)?.toIntOrNull() ?: 0
+                                val e = parts.getOrNull(1)?.toIntOrNull() ?: node.length()
                                 for (k in s until e) out.add(node.opt(k))
                             }
                             else -> {
