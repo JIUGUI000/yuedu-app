@@ -39,6 +39,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.legado.lite.R
+import com.legado.lite.data.entity.BookEntity
 import com.legado.lite.data.entity.ReadHistoryEntity
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -97,8 +98,8 @@ fun ExploreScreen(
                     }
                 }
             } else {
-                items(recent, key = { it.id }) { h ->
-                    HistoryRow(h) { onOpenBook(h.id) }
+                items(recent, key = { it.id }) { b ->
+                    BookRow(b) { onOpenBook(b.id) }
                 }
             }
             item {
@@ -152,6 +153,43 @@ private fun HistoryRow(h: ReadHistoryEntity, onClick: () -> Unit) {
                 )
             }
             Icon(Icons.Outlined.History, contentDescription = null, tint = MaterialTheme.colorScheme.outline)
+        }
+    }
+}
+
+@Composable
+private fun BookRow(b: BookEntity, onClick: () -> Unit) {
+    Card(
+        onClick = onClick,
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+    ) {
+        Row(modifier = Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+            Box(
+                modifier = Modifier
+                    .size(40.dp)
+                    .clip(RoundedCornerShape(8.dp)),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    if (b.cover.isNullOrBlank()) Icons.Outlined.MenuBook else Icons.Outlined.AutoStories,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary
+                )
+            }
+            Spacer(Modifier.size(12.dp))
+            Column(Modifier.weight(1f)) {
+                Text(b.name, style = MaterialTheme.typography.bodyLarge, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Text(
+                    "${b.author ?: "佚名"} · ${b.lastChapter ?: "未读"}",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+            Icon(Icons.Outlined.AutoStories, contentDescription = null, tint = MaterialTheme.colorScheme.outline)
         }
     }
 }

@@ -58,7 +58,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun SettingsScreen(onOpenSources: () -> Unit) {
     val vm: SettingsViewModel = viewModel()
-    val reader by vm.reader.collectAsState()
+    val reader by vm.reader.collectAsState(initial = ReaderPreferences())
     val ttsState by TtsController.state.collectAsState()
     val ttsInfo by TtsController.modelInfo.collectAsState()
     val context = LocalContext.current
